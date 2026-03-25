@@ -24,6 +24,14 @@ class MagasinTest {
         for (Item item : app.items) {
             Assertions.assertTrue(item.quality >= 0);
         }
+
+        // Vérifie que la qualité n'est jamais au dessus de 50 sauf pour la Kryptonite
+        for (Item item : app.items) {
+            if (!item.name.equals("Kryptonite")) {
+                Assertions.assertTrue(item.quality < 50);
+            }
+        }
+
     }
 
 }
