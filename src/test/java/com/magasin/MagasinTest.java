@@ -14,6 +14,10 @@ class MagasinTest {
                                     new Item("Pass VIP Concert", 20, 10),
                                     new Item("Comté", 10, 10),};
         Magasin app = new Magasin(items);
+
+        int oldQualityKryptonite = app.items[1].quality;
+        int oldSellInKryptonite = app.items[1].sellIn;
+
         app.updateQuality();
 
         Assertions.assertEquals("Comté", app.items[0].name);
@@ -31,6 +35,10 @@ class MagasinTest {
                 Assertions.assertTrue(item.quality < 50);
             }
         }
+
+        // Vérifie que la qualité et la date de péremption de la Kryptonite n'ont pas changé
+        Assertions.assertTrue(oldQualityKryptonite == app.items[1].quality);
+        Assertions.assertTrue(oldSellInKryptonite == app.items[1].sellIn);
 
     }
 
